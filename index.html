@@ -131,7 +131,7 @@ table{ border-collapse:collapse; width:100%; }
   display:flex; align-items:center; gap:14px;
 }
 .eyebrow::after{ content:""; flex:1 1 auto; height:1px; background:var(--line); max-width:140px; }
-.eyebrow .jp{ font-family:var(--ff-jp); font-size:11px; font-weight:500; letter-spacing:.2em; color:var(--mute); }
+.eyebrow .jp{ font-family:var(--ff-jp); font-size:11px; font-weight:500; letter-spacing:.2em; color:var(--mute); text-transform:none; }
 .bg-dark .eyebrow,.bg-dark2 .eyebrow{ color:rgba(255,255,255,.82); }
 .bg-dark .eyebrow::after,.bg-dark2 .eyebrow::after{ background:var(--dark-line2); }
 .bg-dark .eyebrow .jp,.bg-dark2 .eyebrow .jp{ color:var(--dark-mute); }
@@ -217,7 +217,7 @@ table{ border-collapse:collapse; width:100%; }
 .hero-in{ display:grid; grid-template-columns:1fr 1fr; align-items:stretch; min-height:560px; }
 .hero-body{ display:flex; flex-direction:column; justify-content:center; padding:64px 48px 64px max(var(--pad), calc((100vw - var(--wrap)) / 2 + var(--pad))); }
 .hero-media{ position:relative; overflow:hidden; }
-.hero-media img{ width:100%; height:100%; object-fit:cover; object-position:60% 45%; filter:saturate(.92) contrast(1.05); }
+.hero-media img{ width:100%; height:100%; object-fit:cover; object-position:48% 52%; filter:saturate(.92) contrast(1.05); }
 .hero-media::after{
   content:""; position:absolute; left:0; top:0; bottom:0; width:90px;
   background:linear-gradient(90deg, #fff 0%, rgba(255,255,255,0) 100%);
@@ -226,7 +226,7 @@ table{ border-collapse:collapse; width:100%; }
   font-family:var(--ff-en); font-weight:500; font-size:12px; letter-spacing:.3em;
   text-transform:uppercase; color:var(--gray-main); display:flex; align-items:center; gap:12px; flex-wrap:wrap;
 }
-.hero-kicker .jp{ font-family:var(--ff-jp); font-size:11.5px; letter-spacing:.12em; color:var(--mute); }
+.hero-kicker .jp{ font-family:var(--ff-jp); font-size:11.5px; letter-spacing:.12em; color:var(--mute); text-transform:none; }
 .hero-title{
   margin-top:22px; color:var(--ink-strong); font-weight:900;
   font-size:clamp(28px,3.4vw,46px); line-height:1.42;
@@ -278,8 +278,12 @@ table{ border-collapse:collapse; width:100%; }
 /* ---------------- 汎用パーツ ---------------- */
 .figure{ position:relative; margin-top:40px; overflow:hidden; }
 .figure img{ width:100%; aspect-ratio:16/8; object-fit:cover; filter:saturate(.94) contrast(1.04); }
-.figure::after{ content:""; position:absolute; left:0; bottom:0; width:76px; height:4px; background:var(--accent); }
-.figure-cap{ margin-top:10px; font-family:var(--ff-en); font-weight:300; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); }
+
+.figure-cap{
+  position:relative; margin-top:0; padding-top:16px;
+  font-family:var(--ff-jp); font-weight:500; font-size:12px; letter-spacing:.08em; color:var(--mute);
+}
+.figure-cap::before{ content:""; position:absolute; left:0; top:0; width:76px; height:4px; background:var(--accent); }
 .bg-dark .figure-cap,.bg-dark2 .figure-cap{ color:var(--dark-mute); }
 .bg-dark .card,.bg-dark2 .card{ background:var(--dark-2); border-color:var(--dark-line); }
 .bg-dark2 .card{ background:var(--dark); }
@@ -362,9 +366,7 @@ table{ border-collapse:collapse; width:100%; }
 .bg-dark2 .level,.bg-dark .level{ background:var(--dark); border-color:var(--dark-line); border-top-color:rgba(255,255,255,.4); }
 .bg-dark2 .level-jp,.bg-dark .level-jp{ color:#fff; }
 .bg-dark2 .level-d,.bg-dark .level-d{ color:var(--dark-mute); }
-.level-en{ font-family:var(--ff-en); font-weight:600; font-size:12px; letter-spacing:.2em; color:var(--mute); }
-.bg-dark .level-en,.bg-dark2 .level-en{ color:var(--dark-mute); }
-.level-jp{ margin-top:8px; font-weight:700; font-size:17px; color:var(--ink-strong); }
+.level-jp{ font-weight:700; font-size:18px; color:var(--ink-strong); }
 .level-d{ margin-top:6px; font-size:12.5px; color:var(--mute); line-height:1.8; }
 @media (max-width:720px){ .levels{ grid-template-columns:1fr; } }
 
@@ -450,9 +452,9 @@ table{ border-collapse:collapse; width:100%; }
 .cmp{ margin-top:36px; border:1px solid var(--line); overflow:hidden; background:var(--paper); }
 .cmp-row{ display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--line); }
 .cmp-row:last-child{ border-bottom:0; }
-.cmp-head{ font-family:var(--ff-en); font-weight:500; font-size:12px; letter-spacing:.18em; text-transform:uppercase; padding:13px 18px; }
-.cmp-head.bad{ color:var(--mute); background:#fafafa; }
-.cmp-head.good{ color:#fff; background:var(--dark); }
+.cmp-head{ font-family:var(--ff-jp); font-weight:700; font-size:13px; letter-spacing:.08em; padding:13px 18px; }
+.cmp-row .cmp-head.bad{ color:var(--mute); background:#fafafa; padding:13px 18px; }
+.cmp-row .cmp-head.good{ color:#fff; background:var(--dark); padding:13px 18px; border-left:3px solid var(--dark); }
 .cmp-row .bad{ padding:18px; font-size:14px; color:var(--mute); }
 .cmp-row .good{ padding:18px; font-size:14px; font-weight:700; color:var(--ink-strong); background:#f7f7f7; border-left:3px solid var(--accent); }
 @media (max-width:720px){ .cmp-row{ grid-template-columns:1fr; } .cmp-row .bad{ padding-bottom:6px; } }
@@ -579,7 +581,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="hero-media">
-      <img src="images/hero.jpg" alt="スプリント動作を指導するアスリートジムNeeDSのトレーナー" width="1600" height="1067" fetchpriority="high" decoding="async">
+      <img src="images/hero.jpg" alt="バーベルスクワットを補助するアスリートジムNeeDSのトレーナー" width="1600" height="1067" fetchpriority="high" decoding="async">
     </div>
   </div>
 </section>
@@ -646,7 +648,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </article>
       <article class="pcard rv">
         <div class="pcard-img">
-          <img src="images/session.jpg" alt="選手の動作を指導するトレーナー" loading="lazy">
+          <img src="images/work-03.jpg" alt="ダンベル種目のフォームを指導するトレーナー" loading="lazy">
           <span class="badge">業務<span class="n">03</span></span>
         </div>
         <div class="pcard-body">
@@ -666,7 +668,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </article>
       <article class="pcard rv">
         <div class="pcard-img">
-          <img src="images/facility.jpg" alt="NeeDSのストレングスエリア" loading="lazy">
+          <img src="images/work-05.jpg" alt="コンディショニングを指導するトレーナー" loading="lazy">
           <span class="badge">業務<span class="n">05</span></span>
         </div>
         <div class="pcard-body">
@@ -719,25 +721,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="levels rv">
       <div class="level">
-        <p class="level-en">Junior</p>
         <p class="level-jp">ジュニア</p>
         <p class="level-d">小学生・中学生・高校生</p>
       </div>
       <div class="level">
-        <p class="level-en">Adult</p>
         <p class="level-jp">大人</p>
         <p class="level-d">大学生・社会人アスリート</p>
       </div>
       <div class="level">
-        <p class="level-en">Professional</p>
         <p class="level-jp">プロ</p>
         <p class="level-d">プロ野球選手・プロゴルファー など</p>
       </div>
     </div>
 
     <div class="figure rv">
-      <img src="images/facility.jpg" alt="アスリートジムNeeDSのストレングスエリア" loading="lazy">
-      <p class="figure-cap">Athlete NeeDS — Strength Area</p>
+      <img src="images/atg-inside.jpg" alt="アスリートジムNeeDSのトレーニングエリア" loading="lazy">
+      <p class="figure-cap">アスリートジムNeeDS ／ トレーニングエリア</p>
     </div>
 
     <div class="callout rv">
@@ -916,8 +915,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="figure rv">
-      <img src="images/studio.jpg" alt="アスリートジムNeeDSのトレーニングフロア" loading="lazy">
-      <p class="figure-cap">Training Floor</p>
+      <img src="images/atg-outside.jpg" alt="アスリートジムNeeDSの外観" loading="lazy">
+      <p class="figure-cap">アスリートジムNeeDS</p>
     </div>
   </div>
 </section>
