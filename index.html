@@ -195,12 +195,10 @@ table{ border-collapse:collapse; width:100%; }
 }
 .site-header.on{ border-bottom-color:var(--accent); box-shadow:0 2px 16px rgba(30,34,38,.22); }
 .hdr-in{ height:100%; display:flex; align-items:center; justify-content:space-between; gap:18px; }
-.brand{ display:inline-flex; align-items:center; gap:10px; }
-/* 本番の「Athlete NeeDS」ロゴ画像が届いたら、.brand-mark を
-   <img class="brand-logo" src="images/logo.png" alt="アスリートジムNeeDS"> に差し替える */
-.brand-logo{ height:30px; width:auto; }
-.brand-mark{ font-family:var(--ff-en); font-weight:600; font-size:19px; letter-spacing:.04em; color:#fff; line-height:1; }
-.brand-mark .a{ color:var(--accent-h); }
+.brand{ display:inline-flex; align-items:center; gap:12px; }
+/* logo-white.png は黒い面用の白抜き版、logo.png は明るい面用 */
+.brand-logo{ height:42px; width:auto; }
+@media (max-width:520px){ .brand-logo{ height:34px; } }
 .brand-tag{ font-family:var(--ff-en); font-weight:400; font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--dark-mute); }
 .hdr-nav{ display:flex; align-items:center; gap:24px; }
 .hdr-nav a{ font-size:12.5px; font-weight:500; letter-spacing:.06em; color:rgba(255,255,255,.86); }
@@ -486,9 +484,7 @@ table{ border-collapse:collapse; width:100%; }
 
 .site-footer{ background:var(--dark); color:rgba(255,255,255,.72); padding:48px 0 96px; border-top:4px solid var(--accent); }
 .ft-in{ display:flex; flex-wrap:wrap; gap:30px; justify-content:space-between; align-items:flex-start; }
-.ft-mark{ font-family:var(--ff-en); font-weight:600; font-size:19px; letter-spacing:.04em; color:#fff; line-height:1; }
-.ft-mark .a{ color:var(--accent-h); }
-.ft-logo{ height:30px; }
+.ft-logo{ height:56px; width:auto; }
 .ft-c{ margin-top:14px; font-size:12.5px; line-height:1.95; }
 .ft-nav{ display:flex; flex-wrap:wrap; gap:8px 22px; }
 .ft-nav a{ font-size:12.5px; color:rgba(255,255,255,.88); }
@@ -528,9 +524,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="site-header" id="hdr">
   <div class="wrap hdr-in">
     <a class="brand" href="#top">
-      <!-- TODO: 「Athlete NeeDS」のロゴ画像を images/logo.png に置いたら、下の .brand-mark を
-           <img class="brand-logo" src="images/logo.png" alt="アスリートジムNeeDS"> に差し替える -->
-      <span class="brand-mark"><span class="a">Athlete</span> NeeDS</span>
+      <img class="brand-logo" src="images/logo-white.png" alt="アスリートジムNeeDS" width="1004" height="693">
       <span class="brand-tag">Recruit</span>
     </a>
     <nav class="hdr-nav">
@@ -1196,9 +1190,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap">
     <div class="ft-in">
       <div>
-        <!-- TODO: ロゴ画像を images/logo.png に置いたら
-             <img class="ft-logo" src="images/logo.png" alt="アスリートジムNeeDS"> に差し替える -->
-        <span class="ft-mark"><span class="a">Athlete</span> NeeDS</span>
+        <img class="ft-logo" src="images/logo-white.png" alt="アスリートジムNeeDS" width="1004" height="693">
         <p class="ft-c">
           アスリートジムNeeDS ／ 株式会社NeeDS（六甲）<br>
           〒657-0053　兵庫県神戸市灘区六甲町4丁目1-15　1F<br>
