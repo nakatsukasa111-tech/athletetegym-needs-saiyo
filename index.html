@@ -371,11 +371,11 @@ table{ border-collapse:collapse; width:100%; }
 @media (max-width:720px){ .levels{ grid-template-columns:1fr; } }
 
 /* アドバイザー */
-.adv{ margin-top:28px; display:flex; flex-direction:column; gap:16px; max-width:920px; margin-left:auto; margin-right:auto; }
-/* 3名／2名／2名の3段。2名の段もカード幅は3列のときと同じにして中央に寄せる */
+.adv{ margin-top:28px; display:flex; flex-direction:column; gap:16px; }
+/* 4名／3名の2段。3名の段もカード幅は4列のときと同じにして中央に寄せる */
 .adv-row{ display:grid; gap:16px; justify-content:center; }
-.adv-row-3{ grid-template-columns:repeat(3, minmax(0,1fr)); }
-.adv-row-2{ grid-template-columns:repeat(2, calc((100% - 32px) / 3)); }
+.adv-row-4{ grid-template-columns:repeat(4, minmax(0,1fr)); }
+.adv-row-3{ grid-template-columns:repeat(3, calc((100% - 48px) / 4)); }
 .adv-c{ background:var(--paper); border:1px solid var(--line); padding:0; text-align:center; overflow:hidden; }
 .adv-ph{ width:100%; aspect-ratio:4/5; overflow:hidden; background:var(--bg-gray); }
 .adv-ph img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease; }
@@ -806,36 +806,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="adv rv">
-      <div class="adv-row adv-row-3">
-        <div class="adv-c">
-          <div class="adv-ph"><img src="images/advisor-01.jpg" alt="見邨 直人" width="640" height="800" loading="lazy"></div>
-          <p class="adv-n">見邨 直人</p>
-          <p class="adv-r">現役プロ野球トレーナー</p>
-        </div>
+      <div class="adv-row adv-row-4">
         <div class="adv-c">
           <div class="adv-ph"><img src="images/advisor-02.jpg" alt="福田 紳一郎" width="640" height="800" loading="lazy"></div>
           <p class="adv-n">福田 紳一郎</p>
           <p class="adv-r">現役MLBトレーナー</p>
         </div>
         <div class="adv-c">
+          <div class="adv-ph"><img src="images/advisor-01.jpg" alt="見邨 直人" width="640" height="800" loading="lazy"></div>
+          <p class="adv-n">見邨 直人</p>
+          <p class="adv-r">現役プロ野球トレーナー</p>
+        </div>
+        <div class="adv-c">
           <div class="adv-ph"><img src="images/advisor-05.jpg" alt="丸山先生" width="640" height="800" loading="lazy"></div>
           <p class="adv-n">丸山先生</p>
           <p class="adv-r">機能解剖学</p>
         </div>
-      </div>
-      <div class="adv-row adv-row-2">
         <div class="adv-c">
           <div class="adv-ph"><img src="images/advisor-06.jpg" alt="森下 健" width="640" height="800" loading="lazy"></div>
           <p class="adv-n">森下 健</p>
           <p class="adv-r"><span class="nw">メンタル</span><span class="nw">トレーニングコーチ</span></p>
         </div>
-        <div class="adv-c">
-          <div class="adv-ph"><img src="images/advisor-07.jpg" alt="木戸 清香" width="640" height="800" loading="lazy"></div>
-          <p class="adv-n">木戸 清香</p>
-          <p class="adv-r">管理栄養士</p>
-        </div>
       </div>
-      <div class="adv-row adv-row-2">
+      <div class="adv-row adv-row-3">
         <div class="adv-c">
           <div class="adv-ph"><img src="images/advisor-04.jpg" alt="河合 庄司" width="640" height="800" loading="lazy"></div>
           <p class="adv-n">河合 庄司</p>
@@ -845,6 +838,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="adv-ph"><img src="images/advisor-03.jpg" alt="上園 啓史" width="640" height="800" loading="lazy"></div>
           <p class="adv-n">上園 啓史</p>
           <p class="adv-r">元プロ野球選手</p>
+        </div>
+        <div class="adv-c">
+          <div class="adv-ph"><img src="images/advisor-07.jpg" alt="木戸 清香" width="640" height="800" loading="lazy"></div>
+          <p class="adv-n">木戸 清香</p>
+          <p class="adv-r">管理栄養士</p>
         </div>
       </div>
     </div>
