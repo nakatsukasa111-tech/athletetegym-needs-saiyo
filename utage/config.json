@@ -1,0 +1,30 @@
+{
+  "api_base": "https://api.utage-system.com/v1",
+
+  "_todo": "funnel_id / step_id / page_id / origin_cta の4つが未設定です。UTAGE側でファネルとページを作成したら、ここに転記してください。未設定のあいだ、GitHub Actions は反映処理をスキップします。",
+
+  "funnel_id": "",
+  "funnel_name": "アスリートトレーナー採用LP",
+
+  "source": "index.html",
+  "images_dir": "images",
+  "dist_dir": "utage/dist",
+
+  "_comment_origin_cta": "原本 index.html に書かれている CTA の URL。ビルド時に各バージョンの遷移先へ差し替えます。原本側の CTA を変えたときは、ここも合わせて変更してください。",
+  "origin_cta": "",
+
+  "variants": [
+    {
+      "key": "a",
+      "label": "A：採用LINE登録版",
+      "title": "アスリートトレーナー募集｜アスリートジムNeeDS",
+      "step_id": "",
+      "page_id": "",
+      "step_url": "",
+      "is_no_index": 1,
+      "cta": "",
+      "apply_passthrough": false,
+      "replacements": []
+    }
+  ]
+}
