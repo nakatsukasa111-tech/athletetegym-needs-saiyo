@@ -49,12 +49,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      （本家の #ea5b0c を基準に、彩度を約25%落とした色） */
   --accent:     #bf5a20;
   --accent-h:   #d06a2c;
+  /* CTAボタンだけは本家サイトの鮮やかなオレンジを使う */
+  --cta:        #ea5b0c;
+  --cta-h:      #f36c19;
   --accent-mark:rgba(191,90,32,.30);   /* 明るい面のハイライト */
   --accent-mark-d:rgba(191,90,32,.62); /* 暗い面のハイライト */
   --gray-main:  #4d4d4d;
   --gray-sub:   #bdbebd;
   --bg-gray:    #eeeeee;
-  --line-green: #00b901;
 
   /* 暗色の帯（力強さを出すためのアクセント面） */
   --dark:       #1e2226;
@@ -173,15 +175,11 @@ table{ border-collapse:collapse; width:100%; }
   display:inline-flex; align-items:center; justify-content:center; gap:12px;
   min-height:64px; padding:16px 34px; width:100%; max-width:430px;
   font-weight:700; font-size:16px; letter-spacing:.03em; color:#fff !important;
-  background:var(--accent); border:2px solid var(--accent); border-radius:4px;
+  background:var(--cta); border:2px solid var(--cta); border-radius:4px;
   transition:background .25s ease, border-color .25s ease, transform .15s ease;
 }
-.btn:hover{ background:var(--accent-h); border-color:var(--accent-h); transform:translateY(-2px); }
+.btn:hover{ background:var(--cta-h); border-color:var(--cta-h); transform:translateY(-2px); }
 .btn .arw{ font-family:var(--ff-en); font-weight:400; }
-.line-badge{
-  font-family:var(--ff-en); font-weight:600; font-size:11px; letter-spacing:.12em;
-  background:var(--line-green); color:#fff; padding:3px 8px; line-height:1; border-radius:2px;
-}
 .cta-block{ margin-top:34px; display:flex; flex-direction:column; align-items:center; gap:12px; }
 .cta-note{ font-size:12.5px; color:var(--mute); text-align:center; }
 .bg-dark .cta-note,.bg-dark2 .cta-note{ color:var(--dark-mute); }
@@ -200,17 +198,23 @@ table{ border-collapse:collapse; width:100%; }
 /* logo-white.png は黒い面用の白抜き版、logo.png は明るい面用 */
 .brand-logo{ height:42px; width:auto; }
 @media (max-width:520px){ .brand-logo{ height:34px; } }
-.brand-tag{ font-family:var(--ff-en); font-weight:400; font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--dark-mute); }
+.brand-text{ display:flex; flex-direction:column; line-height:1.3; }
+.brand-name{ font-size:13.5px; font-weight:700; letter-spacing:.02em; color:#fff; }
+.brand-sub{ font-size:11px; font-weight:500; letter-spacing:.08em; color:var(--dark-mute); }
+@media (max-width:420px){
+  .brand-name{ font-size:12px; }
+  .brand-sub{ font-size:10px; }
+}
 .hdr-nav{ display:flex; align-items:center; gap:24px; }
 .hdr-nav a{ font-size:12.5px; font-weight:500; letter-spacing:.06em; color:rgba(255,255,255,.86); }
 .hdr-nav a:hover{ color:var(--accent); }
 .hdr-cta{
-  background:var(--accent); color:#fff !important; font-family:var(--ff-en); font-weight:600;
+  background:var(--cta); color:#fff !important; font-family:var(--ff-en); font-weight:600;
   font-size:13px !important; letter-spacing:.18em !important; padding:11px 22px; line-height:1; border-radius:3px;
 }
-.hdr-cta:hover{ background:var(--accent-h); }
+.hdr-cta:hover{ background:var(--cta-h); }
 .hdr-nav a.hdr-cta{ color:#fff !important; }
-@media (max-width:960px){ .hdr-nav a:not(.hdr-cta){ display:none; } .brand-tag{ display:none; } }
+@media (max-width:960px){ .hdr-nav a:not(.hdr-cta){ display:none; } }
 
 /* ---------------- HERO（左に文字・右に写真の分割型） ---------------- */
 .hero{ padding-top:var(--header-h); background:var(--paper); }
@@ -229,8 +233,11 @@ table{ border-collapse:collapse; width:100%; }
 .hero-kicker .jp{ font-family:var(--ff-jp); font-size:11.5px; letter-spacing:.12em; color:var(--mute); text-transform:none; }
 .hero-title{
   margin-top:22px; color:var(--ink-strong); font-weight:900;
-  font-size:clamp(28px,3.4vw,46px); line-height:1.42;
+  /* 2行目「自分の成長に変えていく。」を折り返さずに収めるため、
+     画面幅に追従させつつ上限を設ける */
+  font-size:min(7vw, 38px); line-height:1.42;
 }
+.hero-title .nb{ white-space:nowrap; }
 .hero-title em{
   font-style:normal; display:inline-block; padding:0 .06em;
   background:linear-gradient(transparent 62%, var(--accent-mark) 62%);
@@ -253,6 +260,26 @@ table{ border-collapse:collapse; width:100%; }
   .hero-body{ padding:36px var(--pad) 52px; }
   .hero-cta{ align-items:stretch; }
   .hero-cta .cta-note{ text-align:center; }
+}
+/* スマホ：スクロールせずに最初のCTAまで見えるよう、写真を低くし
+   4つのピルはCTAの下へ回す */
+@media (max-width:560px){
+  .hero-media{ aspect-ratio:auto; height:clamp(150px, 27vh, 250px); }
+  .hero-media img{ object-position:50% 40%; }
+  .hero-media::after{ height:40px; }
+  .hero-body{ padding:16px var(--pad) 30px; }
+  /* キッカーは1行に収める */
+  .hero-kicker{ order:1; display:block; font-size:10px; letter-spacing:.18em; line-height:1.5; }
+  .hero-kicker .jp{ display:inline; margin-left:8px; font-size:10.5px; }
+  .hero-title{ order:2; margin-top:10px; }
+  /* 文節ごとの折り返しをやめ、行数を減らす */
+  .hero-sub{ order:3; margin-top:12px; font-size:13px; line-height:1.85; }
+  .hero-sub .nw{ display:inline; }
+  .hero-sub .sub-extra{ display:none; }
+  .hero-cta{ order:4; margin-top:16px; gap:8px; }
+  .hero-pills{ order:5; margin-top:16px; }
+  .hero-cta .btn{ min-height:54px; padding:12px 24px; font-size:15px; }
+  .hero-cta .cta-note{ font-size:12px; }
 }
 
 /* ---------------- NUMBERS ---------------- */
@@ -540,7 +567,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="wrap hdr-in">
     <a class="brand" href="#top">
       <img class="brand-logo" src="images/logo-white.png" alt="アスリートジムNeeDS" width="1004" height="693">
-      <span class="brand-tag">Recruit</span>
+      <span class="brand-text">
+        <span class="brand-name">アスリートジムNeeDS</span>
+        <span class="brand-sub">トレーナー募集</span>
+      </span>
     </a>
     <nav class="hdr-nav">
       <a href="#work">仕事内容</a>
@@ -563,14 +593,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <h1 class="hero-title">
         <span class="nw">選手の夢を、</span><br>
-        <em><span class="nw">自分の成長</span></em>に<br>
-        <span class="nw">変えていく。</span>
+        <span class="nb"><em>自分の成長</em>に変えていく。</span>
       </h1>
 
       <p class="hero-sub">
         <span class="nw">ジュニアからプロまで、</span><span class="nw">9競技以上。</span><br>
-        <span class="nw">アスリートの夢や目標の達成を、</span><span class="nw">一緒にサポートしませんか。</span><br>
-        <span class="nw">トレーナーとして</span><span class="nw">伸びていける環境を、</span><span class="nw">用意しています。</span>
+        <span class="nw">アスリートの夢や目標の達成を、</span><span class="nw">一緒にサポートしませんか。</span><span class="sub-extra"><br>
+        <span class="nw">トレーナーとして</span><span class="nw">伸びていける環境を、</span><span class="nw">用意しています。</span></span>
       </p>
 
       <ul class="hero-pills">
@@ -583,7 +612,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="cta-block hero-cta">
         <!-- TODO: 採用専用の公式LINEのURLが届いたら href を差し替える -->
         <a class="btn" href="#entry" data-cta="hero">
-          <span class="line-badge">LINE</span>まずは話を聞いてみる<span class="arw">→</span>
+          まずは話を聞いてみる<span class="arw">→</span>
         </a>
         <p class="cta-note"><strong>相談だけでもOK。</strong>今回の募集は1〜2名です。</p>
       </div>
@@ -1190,7 +1219,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="cta-block rv">
       <!-- TODO: 採用専用の公式LINEのURLが届いたら href を差し替える -->
       <a class="btn" href="#" data-cta="final" style="max-width:480px">
-        <span class="line-badge">LINE</span>LINEで話を聞いてみる<span class="arw">→</span>
+        LINEで話を聞いてみる<span class="arw">→</span>
       </a>
       <p class="cta-note">相談だけでも大歓迎です。お気軽にどうぞ。</p>
     </div>
@@ -1228,7 +1257,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ============ STICKY CTA (SP) ============ -->
 <div class="sticky" id="sticky">
-  <a class="btn" href="#entry" data-cta="sticky"><span class="line-badge">LINE</span>話を聞いてみる<span class="arw">→</span></a>
+  <a class="btn" href="#entry" data-cta="sticky">話を聞いてみる<span class="arw">→</span></a>
 </div>
 
 <script>
